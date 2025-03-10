@@ -1,0 +1,36 @@
+/* Animação para a borda piscando */
+@keyframes borderBlink {
+    0% {
+        border-color: #006400;
+        /* verde escuro */
+    }
+
+    50% {
+        border-color: transparent;
+        /* invisível no meio da animação */
+    }
+
+    100% {
+        border-color: #006400;
+        /* verde escuro */
+    }
+}
+
+/* Aplicando animação na borda do card */
+.album-card {
+    width: 100%;
+    border: 4px solid transparent;
+    /* Definir borda transparente para iniciar */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: borderBlink 1s infinite;
+    /* Aplica a animação */
+}
+
+.album-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
