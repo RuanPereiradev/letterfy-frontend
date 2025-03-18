@@ -27,6 +27,13 @@ const Sidebar = () => {
           <img className="w-6" src={assets.search_icon} alt="Search Icon" />
           <p className="font-bold">Search</p>
         </div>
+
+        
+          <div  onClick={() => navigate('/login')} className='flex items-center gap-3 pl-8 cursor-pointer'>
+            <img  className = 'w-6' src={assets.arrow_icon} alt="" />
+            <p className='font-bold'>Login</p>
+          </div>
+        
       </div>
 
       {/* Lista de Músicas Favoritas */}
