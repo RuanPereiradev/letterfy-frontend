@@ -3,6 +3,7 @@
 ### LetterFy é uma aplicação web desenvolvida com React e Vite para avaliação de músicas e álbuns, permitindo aos usuários compartilhar opiniões e notas sobre seus artistas favoritos.
 </br>
 
+<<<<<<< HEAD
 ![Screenshot from 2025-03-21 15-18-14](https://github.com/user-attachments/assets/1139d407-1733-4020-9f0f-271b2c5b2023)
 ![Screenshot from 2025-03-21 15-18-32](https://github.com/user-attachments/assets/9955587d-6f3d-4155-8738-a279d2405343)
 ![Screenshot from 2025-03-21 15-40-50](https://github.com/user-attachments/assets/2e906eb7-8b4a-42fe-9493-a65e0b27807b)
@@ -24,6 +25,10 @@
 ![Screenshot from 2025-03-21 15-41-16](https://github.com/user-attachments/assets/6ece0a89-65d6-43ae-b3ea-cdd1085b2f03)
 
 ## Requisitos (Apenas front-end)
+=======
+
+## Requisitos
+>>>>>>> atualizações de busca e filtro
 Antes de iniciar, certifique-se de que possui os seguintes requisitos instalados:
 - [Node.js](https://nodejs.org/) (versão 18 ou superior)
 - [npm](https://www.npmjs.com/) (gerenciador de pacotes do Node.js)

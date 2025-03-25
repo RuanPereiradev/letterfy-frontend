@@ -1,23 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import Sidebar from "./components/Sidebar";
-import Player from "./components/Player";
 import Display from "./components/Display";
-import { PlayerContext } from "./context/PlayerContext";
 import { useLocation } from "react-router-dom";
 import LoginSingup from "./components/LoginSingup";
-import Register from "./components/Register"; // Verifique o caminho correto para o seu componente
+import Register from "./components/Register";
+import Footer from "./components/Footer";
 
 const App = () => {
-  const { audioRef, track } = useContext(PlayerContext);
   const location = useLocation();
 
-  // Verifica se a rota atual é a de login ou registro
+  // Verifica se a página é de login ou registro
   const isAuthPage =
     location.pathname === "/login" || location.pathname === "/register";
 
   return (
-    <div className="h-screen bg-black">
-      {/* Renderiza a tela de login ou registro sem a sidebar e o player */}
+    <div className="flex flex-col min-h-screen bg-black">
       {isAuthPage ? (
         location.pathname === "/login" ? (
           <LoginSingup />
@@ -25,16 +22,15 @@ const App = () => {
           <Register />
         )
       ) : (
-        <div className="h-[90%] flex">
-          <Sidebar />
-          <Display />
+        <div className="flex flex-col flex-grow">
+          <div className="flex flex-grow">
+            <Sidebar />
+            <Display />
+          </div>
+          {/* Footer agora está corretamente posicionado no final */}
+          <Footer />
         </div>
       )}
-
-      {/* Só exibe o Player se não for login ou registro */}
-      {!isAuthPage && <Player />}
-
-      <audio ref={audioRef} src={track.file} preload="auto"></audio>
     </div>
   );
 };
