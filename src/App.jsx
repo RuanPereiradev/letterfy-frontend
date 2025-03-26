@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import LoginSingup from "./components/LoginSingup";
 import Register from "./components/Register";
 import Footer from "./components/Footer";
+import { AuthProvider } from "./context/AuthContext"; // Importe o provedor do contexto
 
 const App = () => {
   const location = useLocation();
@@ -14,24 +15,29 @@ const App = () => {
     location.pathname === "/login" || location.pathname === "/register";
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
-      {isAuthPage ? (
-        location.pathname === "/login" ? (
-          <LoginSingup />
+    <AuthProvider>
+      {" "}
+      {/* Envolva sua aplicação com o AuthProvider */}
+      <div className="flex flex-col min-h-screen bg-black">
+        <Sidebar />
+
+        {isAuthPage ? (
+          location.pathname === "/login" ? (
+            <LoginSingup />
+          ) : (
+            <Register />
+          )
         ) : (
-          <Register />
-        )
-      ) : (
-        <div className="flex flex-col flex-grow">
-          <div className="flex flex-grow">
-            <Sidebar />
-            <Display />
+          <div className="flex flex-col flex-grow">
+            <div className="flex flex-grow">
+              <Display />
+            </div>
+            {/* Footer agora está corretamente posicionado no final */}
+            <Footer />
           </div>
-          {/* Footer agora está corretamente posicionado no final */}
-          <Footer />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </AuthProvider>
   );
 };
 

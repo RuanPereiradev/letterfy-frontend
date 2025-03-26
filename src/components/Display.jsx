@@ -29,9 +29,9 @@ const Display = () => {
   return (
     <div
       ref={displayRef}
-      className={`w-[100%] m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto ${
-        isAuthPage ? "w-[100%]" : "lg:w-[75%]"
-      } lg:ml-0`}
+      className={`w-full m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto ${
+        isAuthPage ? "w-full" : "lg:w-4/4" // Usando lg:w-3/4 para uma largura adequada no desktop
+      } mx-auto`} // Adiciona margem automática para centralizar
     >
       <Routes>
         <Route path="/" element={<DisplayHome />} />
