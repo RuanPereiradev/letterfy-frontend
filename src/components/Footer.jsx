@@ -42,14 +42,14 @@ const Footer = () => {
               <FaTwitter className="text-3xl hover:text-blue-400 transition duration-300" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/ruanpereira__/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaInstagram className="text-3xl hover:text-pink-500 transition duration-300" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/ruan-pereira-do-nascimento-ab6a45228"
               target="_blank"
               rel="noopener noreferrer"
             >

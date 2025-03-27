@@ -6,6 +6,7 @@ import SongDetails from "./SongDetails";
 import LoginSingup from "./LoginSingup";
 import Register from "./Register";
 import { albumsData } from "../assets/assets";
+import ReviewAlbum from "./ReviewAlbum";
 
 const Display = () => {
   const displayRef = useRef();
@@ -39,6 +40,7 @@ const Display = () => {
         <Route path="/song/:id" element={<SongDetails />} />
         <Route path="/login" element={<LoginSingup />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/review/:id" element={<ReviewAlbum/>}/>
       </Routes>
     </div>
   );

@@ -16,7 +16,6 @@ const App = () => {
 
   return (
     <AuthProvider>
-      {" "}
       {/* Envolva sua aplicação com o AuthProvider */}
       <div className="flex flex-col min-h-screen bg-black">
         <Sidebar />
