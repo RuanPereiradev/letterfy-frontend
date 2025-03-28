@@ -38,6 +38,7 @@ const Login = () => {
     );
     console.log("Login Success", response.data);
     if(response.data.token){
+      localStorage.setItem("token", response.data.token)
       setAuthToken(response.data.token)
       navigate("/");
 

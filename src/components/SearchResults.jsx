@@ -13,7 +13,8 @@ const AlbumSearch = ({ query }) => {
         const response = await axios.get(
           `http://localhost:8080/v1/album/search?name=${query}`
         );
-        setSearchResults(response.data);
+        console.log(response.data); // Verifique se os álbuns têm 'album_id'
+        setSearchResults(response.data.albums || []); // Assume que a chave 'albums' é a lista de álbuns
       } catch (error) {
         console.log("Erro ao buscar álbuns:", error);
       }
@@ -27,16 +28,14 @@ const AlbumSearch = ({ query }) => {
       <h2 className="text-white text-xl mb-2">Resultados da Pesquisa</h2>
 
       <div className="flex flex-col gap-4">
-        {" "}
-        {/* Exibe os álbuns na vertical */}
         {searchResults.length > 0 ? (
           searchResults.map((album) => (
             <div
-              key={album.id}
+              key={album.album_id || album.name} // Use album_id ou name como chave
               className="flex items-center gap-4 bg-gray-800 p-3 rounded-lg"
             >
               <img
-                src={album.coverImage}
+                src={album.coverImage || "fallback-image.jpg"} // Imagem de fallback
                 alt={album.name}
                 className="w-16 h-16 rounded-lg"
               />
