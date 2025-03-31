@@ -22,7 +22,7 @@ const UserIcon = () => (
   </svg>
 );
 
-const DisplayAlbum = () => {
+const DisplayAlbum = () => {coverImage;
   const { albumId } = useParams();
   const [albums, setAlbums] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
