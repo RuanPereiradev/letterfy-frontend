@@ -107,22 +107,22 @@ const SongDetails = () => {
   }
 
   return (
-    <div className='p-6 text-white'>
+    <div className="p-6 text-white">
       {/* Detalhes da música */}
-      <div className='flex gap-6 items-center mb-8'>
+      <div className="flex gap-6 items-center mb-8">
         <img
-          className='w-48 h-48 rounded-lg shadow-lg'
+          className="w-48 h-48 rounded-lg shadow-lg"
           src={song.image}
           alt={song.name}
         />
         <div>
-          <h1 className='text-3xl font-bold'>{song.name}</h1>
-          <p className='text-slate-300 mt-2'>{song.desc}</p>
-          <div className='mt-4 flex items-center gap-2'>
-            <span className='text-yellow-400 text-2xl'>
-              {'★'.repeat(Math.round(calculateAverageRating()))}
+          <h1 className="text-3xl font-bold">{song.name}</h1>
+          <p className="text-slate-300 mt-2">{song.desc}</p>
+          <div className="mt-4 flex items-center gap-2">
+            <span className="text-yellow-400 text-2xl">
+              {"★".repeat(Math.round(calculateAverageRating()))}
             </span>
-            <span className='text-slate-400'>
+            <span className="text-slate-400">
               ({comments.length} avaliações)
             </span>
           </div>
@@ -130,38 +130,38 @@ const SongDetails = () => {
       </div>
 
       {/* Seção para fazer um comentário */}
-      <div className='bg-[#242424] p-6 rounded-lg mb-8'>
-        <h2 className='text-2xl font-bold mb-4'>Deixe seu comentário</h2>
+      <div className="bg-[#242424] p-6 rounded-lg mb-8">
+        <h2 className="text-2xl font-bold mb-4">Deixe seu comentário</h2>
         <form onSubmit={handleSubmit}>
-          <div className='flex gap-4 items-start'>
-            <div className='flex-shrink-0'>
+          <div className="flex gap-4 items-start">
+            <div className="flex-shrink-0">
               <UserIcon /> {/* Ícone SVG de usuário */}
             </div>
-            <div className='flex-1'>
+            <div className="flex-1">
               <textarea
-                className='w-full p-3 rounded-lg bg-[#363636] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500'
-                placeholder='Escreva seu comentário...'
+                className="w-full p-3 rounded-lg bg-[#363636] text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Escreva seu comentário..."
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                rows='3'
+                rows="3"
               />
-              <div className='mt-2 flex items-center gap-2'>
-                <label className='text-slate-300'>Avaliação: </label>
+              <div className="mt-2 flex items-center gap-2">
+                <label className="text-slate-300">Avaliação: </label>
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span
                     key={star}
-                    className='cursor-pointer text-2xl'
+                    className="cursor-pointer text-2xl"
                     onClick={() => setRating(star)}
                   >
-                    {star <= rating ? '★' : '☆'}
+                    {star <= rating ? "★" : "☆"}
                   </span>
                 ))}
               </div>
             </div>
           </div>
           <button
-            type='submit'
-            className='mt-4 px-6 py-2 bg-green-500 rounded-lg hover:bg-green-600 transition-colors'
+            type="submit"
+            className="mt-4 px-6 py-2 bg-green-500 rounded-lg hover:bg-green-600 transition-colors"
           >
             Enviar Comentário
           </button>
@@ -169,40 +169,42 @@ const SongDetails = () => {
       </div>
 
       {/* Seção de comentários já feitos */}
-      <div className='bg-[#242424] p-6 rounded-lg'>
-        <h2 className='text-2xl font-bold mb-4'>Comentários</h2>
-        <div className='space-y-6'>
+      <div className="bg-[#242424] p-6 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4">Comentários</h2>
+        <div className="space-y-6">
           {comments.map((comment, index) => (
-            <div key={index} className='flex gap-4'>
-              <div className='flex-shrink-0'>
+            <div key={index} className="flex gap-4">
+              <div className="flex-shrink-0">
                 <UserIcon /> {/* Ícone SVG de usuário */}
               </div>
-              <div className='flex-1'>
-                <div className='flex justify-between items-center'>
-                  <span className='font-bold'>{comment.user}</span>
-                  <div className='flex items-center gap-2'>
-                    <span className='text-yellow-400'>
-                      {'★'.repeat(comment.rating)}
+              <div className="flex-1">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold">{comment.user}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-yellow-400">
+                      {"★".repeat(comment.rating)}
                     </span>
-                    <div className='relative'>
+                    <div className="relative">
                       <button
-                        className='text-slate-400 hover:text-white'
+                        className="text-slate-400 hover:text-white"
                         onClick={() =>
-                          setEditingCommentId(editingCommentId === index ? null : index)
+                          setEditingCommentId(
+                            editingCommentId === index ? null : index
+                          )
                         }
                       >
-                        <span className='text-2xl'>...</span>
+                        <span className="text-2xl">...</span>
                       </button>
                       {editingCommentId === index && (
-                        <div className='absolute right-0 mt-2 w-32 bg-[#363636] rounded-lg shadow-lg'>
+                        <div className="absolute right-0 mt-2 w-32 bg-[#363636] rounded-lg shadow-lg">
                           <button
-                            className='block w-full px-4 py-2 text-left hover:bg-[#454545]'
+                            className="block w-full px-4 py-2 text-left hover:bg-[#454545]"
                             onClick={() => setEditingCommentId(index)}
                           >
                             Editar
                           </button>
                           <button
-                            className='block w-full px-4 py-2 text-left hover:bg-[#454545]'
+                            className="block w-full px-4 py-2 text-left hover:bg-[#454545]"
                             onClick={() => handleDeleteComment(index)}
                           >
                             Excluir
@@ -214,14 +216,12 @@ const SongDetails = () => {
                 </div>
                 {editingCommentId === index ? (
                   <textarea
-                    className='w-full p-2 mt-2 rounded bg-[#363636] text-white'
+                    className="w-full p-2 mt-2 rounded bg-[#363636] text-white"
                     value={comment.text}
-                    onChange={(e) =>
-                      handleEditComment(index, e.target.value)
-                    }
+                    onChange={(e) => handleEditComment(index, e.target.value)}
                   />
                 ) : (
-                  <p className='mt-2 text-slate-300'>{comment.text}</p>
+                  <p className="mt-2 text-slate-300">{comment.text}</p>
                 )}
               </div>
             </div>
@@ -231,7 +231,7 @@ const SongDetails = () => {
 
       {/* Botão para alterar usuário */}
       <button
-        className='mt-6 px-4 py-2 bg-purple-500 rounded-lg hover:bg-purple-600 transition-colors'
+        className="mt-6 px-4 py-2 bg-purple-500 rounded-lg hover:bg-purple-600 transition-colors"
         onClick={handleChangeUser}
       >
         Alterar Usuário
