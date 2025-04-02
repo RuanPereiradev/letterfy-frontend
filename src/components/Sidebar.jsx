@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PlayerContext } from "../context/PlayerContext";
 import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
-import logonova from "../assets/logonova.webp"; // Importação direta
+import logonova from "../assets/logonova.png"; // Importação direta
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -14,9 +14,24 @@ const Sidebar = () => {
   return (
     <header>
       <div className="w-full h-[90px] p-4 flex items-center justify-between bg-black text-white">
+        {/* Cabeçalho e itens */}
         <div className="flex items-center gap-2">
-          {/* Use a imagem importada diretamente */}
-          <img className="w-14" src={logonova} alt="logo" />
+          {/* Imagem animada estilo Spotify */}
+          <motion.img
+            className="w-14"
+            src={logonova}
+            alt="logo"
+            animate={{
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, -5, 0],
+              filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
           <p className="font-bold text-2xl ml-2">Letterfy</p>
         </div>
 
