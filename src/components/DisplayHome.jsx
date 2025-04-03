@@ -15,6 +15,7 @@ const DisplayHome = ({}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [allAlbums, setAllAlbuns] = useState([]);
+  const [isFocused, setIsFocused] = useState(false);
   const [newReleases, setNewReleases] = useState([]);
   const navigate = useNavigate();
 
@@ -51,6 +52,19 @@ const DisplayHome = ({}) => {
   const filteredAlbums = allAlbums.filter((album) =>
     album.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  
+  const heroCarouselSettings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    fade: true,
+    arrows: false,
+  };
+  
 
   const sliderSettings = {
     dots: false,
@@ -76,17 +90,19 @@ const DisplayHome = ({}) => {
 
       {/* Barra de pesquisa */}
       <motion.div
-        className="search-bar flex items-center space-x-2 p-2 bg-gray-800 rounded-lg shadow-md w-full max-w-md mx-auto mt-4"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="search-bar flex items-center space-x-2 p-2 bg-gray-800 rounded-lg shadow-md w-40 mt-4 transition-all absolute left-4"
+        initial={{ width: "10rem" }}
+        animate={{ width: isFocused ? "20rem" : "10rem" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <FiSearch className="text-gray-900 text-xl" />
+        <FiSearch className="text-gray-400 text-xl" />
         <input
           type="text"
-          placeholder="Pesquisar álbuns..."
+          placeholder="Pesquisar..."
           value={searchQuery}
           onChange={handleSearch}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           className="border-none outline-none bg-transparent p-2 w-full placeholder-gray-500 text-white"
         />
       </motion.div>
@@ -115,23 +131,65 @@ const DisplayHome = ({}) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="mt-6 p-5">
-                <h1 className="my-5 font-bold text-2xl">New Releases</h1>
-                <Slider {...sliderSettings}>
+              
+              <div className="mt-10 relative w-90">
+                
+                <Slider {...heroCarouselSettings}>
+                  
                   {newReleases.map((album) => (
                     <div
-                      key={album.id || album.name}
-                      className="p-2"
+                      key={album.id}
+                      className="flex items-center bg-black-900 p-8 rounded-lg shadow-lg"
                     >
-                      <img
-                        src={album.images?.[0]?.url || "fallback-image.jpg"}
-                        alt={album.name}
-                        className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
-                transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-                      />
-                      <p className="text-center text-white mt-2 font-semibold">
-                        {album.name}
-                      </p>
+                      {/* Imagem do álbum + Botões */}
+                      <div className="flex flex-col items-center space-y-4">
+                        <img
+                          src={album.images?.[0]?.url || "fallback-image.jpg"}
+                          alt={album.name}
+                          className="w-80 h-72 object-cover rounded-lg shadow-md"
+                        />
+
+                        {/* Botões ao lado da capa */}
+                        <div className="flex space-x-4">
+                          <a
+                            href={album.spotify_url || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-green-600 px-4 py-2 text-white font-semibold rounded-lg shadow-lg hover:bg-green-700 transition"
+                          >
+                            🎵 Spotify
+                          </a>
+                          <a
+                            href={album.youtube_url || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-red-600 px-4 py-2 text-white font-semibold rounded-lg shadow-lg hover:bg-red-700 transition"
+                          >
+                            ▶️ YouTube
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Informações do álbum */}
+                      <div className="ml-8 text-white flex flex-col justify-center">
+                        <h1 className="text-4xl font-bold">{album.name}</h1>
+                        <p className="text-xl mt-2 font-medium">
+                          {album.artist}
+                        </p>
+                        <p className="text-gray-400 mt-2 text-lg">
+                          Lançado em: {album.release_date}
+                        </p>
+                        <p className="text-gray-400 mt-1 text-lg">
+                          Total de faixas: {album.total_tracks}
+                        </p>
+
+                        <button
+                          onClick={() => navigate(`/review/${album.id}`)}
+                          className="mt-4 bg-grey-600 px-6 py-2 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition"
+                        >
+                          📖 Ver detalhes
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </Slider>

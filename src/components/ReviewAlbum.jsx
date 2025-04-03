@@ -153,7 +153,9 @@ const ReviewAlbum = () => {
           ) : (
             reviews.map((review) => (
               <div key={review.reviewId} className="bg-[#333] p-4 rounded-md">
-                <p className="font-semibold">{review.login || "Anônimo"}</p>
+                <p className="font-semibold">
+                  {review.user?.login || review.user?.username || "Anônimo"}
+                </p>
                 <div className="flex mb-2">
                   {[...Array(5)].map((_, index) => (
                     <FaStar
