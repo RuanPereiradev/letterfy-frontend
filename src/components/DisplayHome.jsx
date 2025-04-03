@@ -90,9 +90,9 @@ const DisplayHome = ({}) => {
 
       {/* Barra de pesquisa */}
       <motion.div
-        className="search-bar flex items-center space-x-2 p-2 bg-gray-800 rounded-lg shadow-md w-40 mt-4 transition-all absolute left-4"
+        className="search-bar flex items-center space-x-7 p-1 bg-gray-900 rounded-lg shadow-md w-40 mt-4 transition-all relative left-9"
         initial={{ width: "10rem" }}
-        animate={{ width: isFocused ? "20rem" : "10rem" }}
+        animate={{ width: isFocused ? "30rem" : "10rem" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <FiSearch className="text-gray-400 text-xl" />
@@ -131,11 +131,8 @@ const DisplayHome = ({}) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              
               <div className="mt-10 relative w-90">
-                
                 <Slider {...heroCarouselSettings}>
-                  
                   {newReleases.map((album) => (
                     <div
                       key={album.id}
@@ -146,7 +143,7 @@ const DisplayHome = ({}) => {
                         <img
                           src={album.images?.[0]?.url || "fallback-image.jpg"}
                           alt={album.name}
-                          className="w-80 h-72 object-cover rounded-lg shadow-md"
+                          className="w-70 h-72 object-cover rounded-lg shadow-md"
                         />
 
                         {/* Botões ao lado da capa */}
@@ -171,7 +168,7 @@ const DisplayHome = ({}) => {
                       </div>
 
                       {/* Informações do álbum */}
-                      <div className="ml-8 text-white flex flex-col justify-center">
+                      <div className="mx-auto text-white flex flex-col justify-center items-center text-center w-full max-w-lg">
                         <h1 className="text-4xl font-bold">{album.name}</h1>
                         <p className="text-xl mt-2 font-medium">
                           {album.artist}
@@ -185,7 +182,7 @@ const DisplayHome = ({}) => {
 
                         <button
                           onClick={() => navigate(`/review/${album.id}`)}
-                          className="mt-4 bg-grey-600 px-6 py-2 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition"
+                          className="mt-4 bg-gray-600 px-6 py-2 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition"
                         >
                           📖 Ver detalhes
                         </button>
