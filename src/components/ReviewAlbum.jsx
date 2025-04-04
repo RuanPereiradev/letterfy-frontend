@@ -36,6 +36,10 @@ const ReviewAlbum = () => {
     }
   }, [id]);
 
+  const calculateAverageRating = 
+  reviews.length > 0 
+  ? (reviews.reduce((sum, review)=> sum + review.rating, 0)/ reviews.length).toFixed(1): "No reviews";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (rating === 0 || comment.trim() === "") {
@@ -96,6 +100,22 @@ const ReviewAlbum = () => {
           />
           <h1 className="text-3xl font-bold text-center">{album.name}</h1>
           <p className="text-slate-300 mt-2 text-center">{album.desc}</p>
+
+          <div className="mt-4 flex items-center text-lg font-semibold">
+            <span className="mr-2">Média:</span>
+            <div className="flex items-center">
+              {[...Array(5)].map((_, index) => (
+                <FaStar
+                  key={index}
+                  size={20}
+                  color={
+                    index < Math.round(calculateAverageRating) ? "#FFD700" : "#808080"
+                  }
+                />
+              ))}
+            </div>
+            <span className="ml-2">{calculateAverageRating}</span>
+          </div>
         </div>
 
         {/* Seção do formulário de review */}
