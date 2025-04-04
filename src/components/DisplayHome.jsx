@@ -9,6 +9,15 @@ import { FiSearch } from "react-icons/fi"; // Ícone de pesquisa
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '../context/ThemeContext';
+import {
+  Music,
+  Mic2,
+  Guitar,
+  Drum,
+  Heart,
+  Volume2,
+  Library,
+} from "lucide-react";
 
 const DisplayHome = ({}) => {
   const [albums, setAlbums] = useState([]);
@@ -19,6 +28,8 @@ const DisplayHome = ({}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [newReleases, setNewReleases] = useState([]);
   const navigate = useNavigate();
+
+  
 
   // Carregar novos lançamentos (New Releases)
   useEffect(() => {
@@ -51,7 +62,7 @@ const DisplayHome = ({}) => {
 
   
 
-  const renderStars = (rating) => {
+    const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
@@ -135,6 +146,18 @@ const DisplayHome = ({}) => {
     console.log(albumId); // Para depurar e verificar o album_id
     navigate(`/review/${albumId}`); // Navegar para a página de review com o album_id
   };
+
+
+const genres = [
+  { name: "Funk", icon: <Music className="w-14 h-14" /> },
+  { name: "Rap", icon: <Mic2 className="w-14 h-14" /> },
+  { name: "Sertanejo", icon: <Guitar className="w-14 h-14" /> },
+  { name: "Eletrônica", icon: <Volume2 className="w-14 h-14" /> },
+  { name: "Axé", icon: <Drum className="w-14 h-14" /> },
+  { name: "Romântico", icon: <Heart className="w-14 h-14" /> },
+  { name: "Todos", icon: <Library className="w-14 h-14" /> },
+];
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -244,6 +267,21 @@ const DisplayHome = ({}) => {
                 </Slider>
               </div>
             </motion.div>
+
+            {/*Seção de generos musicais*/}
+            <div className="mt-10">
+              <h2 className="text-4xl font-bold mb-14">Gêneros</h2>
+              <div className="flex overflow-x-auto justify-center space-x-8 scrollbar-hide">
+                {genres.map((genre, index) => (
+                  <button
+                    key={index}
+                    className="flex items-center gap-9 px-10 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full whitespace-nowrap shadow-md transition"
+                  >{genre.icon}
+                    <span className="font-medium">{genre.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Seção de Álbuns Mais Votados */}
             <div className="mt-6 p-5">
