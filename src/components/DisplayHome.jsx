@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { FiSearch } from "react-icons/fi"; // Ícone de pesquisa
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from '../context/ThemeContext';
 
 const DisplayHome = ({}) => {
   const [albums, setAlbums] = useState([]);
@@ -46,6 +47,57 @@ const DisplayHome = ({}) => {
         setAllAlbuns([]);
       });
   }, []);
+
+
+  
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    const stars = [];
+
+    // Estrelas cheias
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(
+        <span key={`full-${i}`} className="text-yellow-400 text-lg">
+          ★
+        </span>
+      );
+    }
+
+    // Meia estrela (se quiser usar, aqui coloquei uma estrela com opacidade)
+    if (hasHalfStar) {
+      stars.push(
+        <span key="half" className="text-yellow-400 text-lg opacity-70">
+          ★
+        </span>
+      );
+    }
+
+    // Estrelas vazias
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <span key={`empty-${i}`} className="text-gray-400 text-lg">
+          ★
+        </span>
+      );
+    }
+
+    return stars;
+  };
+
+
+ const getAverageRating = (reviews = []) => {
+   if (reviews.length === 0) return 0;
+   const sum = reviews.reduce((total, r) => total + r.rating, 0);
+   return parseFloat((sum / reviews.length).toFixed(1));
+ };
+
+ const topRatedAlbumsFiltered = allAlbums.filter(
+   (album) => getAverageRating(album.reviews) > 3.5
+ );
 
   const handleSearch = (e) => setSearchQuery(e.target.value);
 
@@ -197,7 +249,7 @@ const DisplayHome = ({}) => {
             <div className="mt-6 p-5">
               <h1 className="my-5 font-bold text-2xl">Highest Rated Albums</h1>
               <Slider {...sliderSettings}>
-                {allAlbums.map((album) => (
+                {topRatedAlbumsFiltered.map((album) => (
                   <div
                     onClick={() => handleClick(album.album_id)}
                     key={album.album_id || album.name}
@@ -207,11 +259,19 @@ const DisplayHome = ({}) => {
                       src={album.images?.[0] || "fallback-image.jpg"}
                       alt={album.name}
                       className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
-                transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+          transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
                     />
-                    <p className="text-center text-white mt-2 font-semibold">
-                      {album.name}
-                    </p>
+                    <div className="text-center mt-2">
+                      <p className="text-white font-semibold">{album.name}</p>
+                      <div className="flex justify-center items-center gap-1 mt-1">
+                        {renderStars(
+                          parseFloat(getAverageRating(album.reviews))
+                        )}
+                        <span className="text-white text-sm ml-2">
+                          ({getAverageRating(album.reviews)})
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </Slider>
