@@ -27,26 +27,25 @@ const DisplayAlbum = () => {coverImage;
   const [albums, setAlbums] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // UseEffect que faz a requisição à API para pegar o álbum
   useEffect(() => {
     fetch(`http://localhost:8080/v1/album/${albumId}`)
-      .then((response) => response.json()) // Converte a resposta em JSON
+      .then((response) => response.json()) 
       .then((data) => {
-        setAlbums(data); // Atualiza o estado com os dados do álbum
-        setIsLoading(false); // Indica que a requisição terminou
+        setAlbums(data); 
+        setIsLoading(false); 
       })
       .catch((error) => {
-        console.error("Erro ao obter o álbum:", error); // Log de erro em caso de falha
-        setIsLoading(false); // Define o estado de carregamento como falso, mesmo em caso de erro
+        console.error("Erro ao obter o álbum:", error); 
+        setIsLoading(false); 
       });
-  }, [albumId]); // A dependência aqui é o albumId, então a requisição será feita sempre que mudar
+  }, [albumId]); 
 
   if (isLoading) {
-    return <p>Carregando...</p>; // Mostra uma mensagem enquanto os dados estão sendo carregados
+    return <p>Carregando...</p>; 
   }
 
   if (!albums) {
-    return <p>Álbum não encontrado...</p>; // Exibe uma mensagem caso não haja dados para o álbum
+    return <p>Álbum não encontrado...</p>;
   }
 
   return (
@@ -77,7 +76,7 @@ const DisplayAlbum = () => {coverImage;
         <form onSubmit={handleSubmit}>
           <div className="flex gap-4 items-start">
             <div className="flex-shrink-0">
-              <UserIcon /> {/* Ícone SVG de usuário */}
+              <UserIcon /> 
             </div>
             <div className="flex-1">
               <textarea
@@ -117,7 +116,7 @@ const DisplayAlbum = () => {coverImage;
           {albums.comments.map((comment, index) => (
             <div key={index} className="flex gap-4">
               <div className="flex-shrink-0">
-                <UserIcon /> {/* Ícone SVG de usuário */}
+                <UserIcon /> 
               </div>
               <div className="flex-1">
                 <div className="flex justify-between items-center">

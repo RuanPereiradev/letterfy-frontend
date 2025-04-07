@@ -77,7 +77,6 @@ const ReviewAlbum = () => {
         return;
       }
 
-      // ✅ Em vez de tentar processar JSON, apenas recarregue a página
       window.location.reload();
     } catch (error) {
       console.error("Erro ao conectar com o backend:", error);
@@ -89,9 +88,7 @@ const ReviewAlbum = () => {
 
   return (
     <div className="p-6 text-white flex flex-col items-center">
-      {/* Container principal para alinhar imagem e formulário lado a lado */}
       <div className="flex w-full max-w-5xl gap-8">
-        {/* Seção da imagem e informações do álbum */}
         <div className="w-1/3 flex flex-col items-center text-left">
           <img
             className="w-full h-auto rounded-lg shadow-lg mb-4"

@@ -15,7 +15,6 @@ const Display = () => {
   const albumId = isAlbum ? location.pathname.slice(-1) : "";
   const bgColor = albumsData[Number(albumId)]?.bgColor || "#121212";
 
-  // Verifica se está em login ou registro para ocultar a barra lateral
   const isAuthPage =
     location.pathname === "/login" || location.pathname === "/register";
 
@@ -31,8 +30,8 @@ const Display = () => {
     <div
       ref={displayRef}
       className={`w-full m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto ${
-        isAuthPage ? "w-full" : "lg:w-4/4" // Usando lg:w-3/4 para uma largura adequada no desktop
-      } mx-auto`} // Adiciona margem automática para centralizar
+        isAuthPage ? "w-full" : "lg:w-4/4" 
+      } mx-auto`} 
     >
       <Routes>
         <Route path="/" element={<DisplayHome />} />

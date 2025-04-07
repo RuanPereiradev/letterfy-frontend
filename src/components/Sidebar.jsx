@@ -14,13 +14,12 @@ const Sidebar = ({ setSearchQuery }) => {
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
-    setSearchQuery(e.target.value); // Atualiza o estado no DisplayHome
+    setSearchQuery(e.target.value); 
   };
 
   return (
     <header>
       <div className="w-full h-[90px] p-4 flex items-center justify-between bg-black text-white">
-        {/* Logo */}
         <div className="flex items-center gap-2">
           <motion.img
             className="w-14"
@@ -32,7 +31,6 @@ const Sidebar = ({ setSearchQuery }) => {
           <p className="font-bold text-2xl ml-2">Letterfy</p>
         </div>
 
-        {/* Barra de Pesquisa */}
         <div className="flex items-center bg-gray-800 rounded-lg px-3 py-1 w-96">
           <FiSearch className="text-gray-400" />
           <input
@@ -44,7 +42,6 @@ const Sidebar = ({ setSearchQuery }) => {
           />
         </div>
 
-        {/* Links de navegação */}
         <div className="flex items-center gap-4">
           <div
             onClick={() => navigate("/")}

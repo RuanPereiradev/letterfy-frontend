@@ -19,7 +19,6 @@ const Player = () => {
     seekSong,
   } = useContext(PlayerContext);
 
-  // Função para alternar entre play e pause
   const handlePlayPause = () => {
     if (playStatus) {
       pause();
@@ -30,10 +29,8 @@ const Player = () => {
 
   return (
     <div className='h-[10%] bg-black flex justify-between items-center text-white px-4'>
-      {/* Elemento de áudio */}
       <audio ref={audioRef} src={track.audio} />
 
-      {/* Informações da música */}
       <div className='hidden lg:flex items-center gap-4'>
         <img className='w-12' src={track.image} alt={track.name} />
         <div>
@@ -42,7 +39,6 @@ const Player = () => {
         </div>
       </div>
 
-      {/* Controles de reprodução */}
       <div className='flex flex-col items-center gap-1 m-auto'>
         <div className='flex gap-4 align-items'>
           <img
@@ -54,19 +50,19 @@ const Player = () => {
             className='w-4 cursor-pointer'
             src={assets.prev_icon}
             alt='Previous'
-            onClick={previous} // Volta para a música anterior
+            onClick={previous} 
           />
           <img
             className='w-4 cursor-pointer'
             src={playStatus ? assets.pause_icon : assets.play_icon}
             alt='Play/Pause'
-            onClick={handlePlayPause} // Toca ou pausa a música
+            onClick={handlePlayPause} 
           />
           <img
             className='w-4 cursor-pointer'
             src={assets.next_icon}
             alt='Next'
-            onClick={next} // Avança para a próxima música
+            onClick={next} 
           />
           <img
             className='w-4 cursor-pointer'

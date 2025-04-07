@@ -143,7 +143,6 @@ const DisplayHome = ({}) => {
   };
 
   const handleClick = (albumId) => {
-    console.log(albumId); // Para depurar e verificar o album_id
     navigate(`/review/${albumId}`); // Navegar para a página de review com o album_id
   };
 
@@ -321,12 +320,12 @@ const genres = [
               <Slider {...sliderSettings}>
                 {allAlbums.map((album) => (
                   <div
-                    onClick={() => handleClick(album.album_id)} // Passando apenas o album_id
-                    key={album.album_id || album.name} // Usando album_id como chave única
+                    onClick={() => handleClick(album.album_id)} 
+                    key={album.album_id || album.name} 
                     className="p-2"
                   >
                     <img
-                      src={album.images?.[0] || "fallback-image.jpg"} // Exibindo a primeira imagem ou fallback
+                      src={album.images?.[0] || "fallback-image.jpg"}
                       alt={album.name}
                       className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
     transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
