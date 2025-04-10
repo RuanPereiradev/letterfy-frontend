@@ -73,12 +73,12 @@ const AlbumList = ({ albums, isSearch }) => {
             </div>
           </div>
         ) : albums.length === 2 ? (
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center">
             {albums.map((album) => (
               <div
                 key={album.album_id || album.name} // Usando album_id
                 onClick={() => handleClick(album.album_id)} // Usando album_id
-                className="cursor-pointer w-64 p-4 rounded-lg shadow-lg bg-black-900 
+                className="cursor-pointer w-80 p-4 rounded-lg shadow-lg bg-black-900 
                 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
               >
                 <img

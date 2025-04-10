@@ -107,7 +107,7 @@ const DisplayHome = ({}) => {
  };
 
  const topRatedAlbumsFiltered = allAlbums.filter(
-   (album) => getAverageRating(album.reviews) > 3.5
+   (album) => getAverageRating(album.reviews) > 3.8
  );
 
   const handleSearch = (e) => setSearchQuery(e.target.value);
@@ -275,7 +275,8 @@ const genres = [
                   <button
                     key={index}
                     className="flex items-center gap-9 px-10 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full whitespace-nowrap shadow-md transition"
-                  >{genre.icon}
+                  >
+                    {genre.icon}
                     <span className="font-medium">{genre.name}</span>
                   </button>
                 ))}
@@ -320,12 +321,16 @@ const genres = [
               <Slider {...sliderSettings}>
                 {allAlbums.map((album) => (
                   <div
-                    onClick={() => handleClick(album.album_id)} 
-                    key={album.album_id || album.name} 
+                    onClick={() => handleClick(album.album_id)}
+                    key={album.album_id || album.name}
                     className="p-2"
                   >
                     <img
-                      src={album.images?.[0] || "fallback-image.jpg"}
+                      src={
+                        album.images && album.images.length > 0
+                          ? album.images[0]
+                          : "/fallback-image.jpg"
+                      }
                       alt={album.name}
                       className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
     transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
