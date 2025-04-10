@@ -1,4 +1,4 @@
-# 🎧 LetterFy - Plataforma de Avaliação de Músicas e Álbuns
+#  LetterFy - Plataforma de Avaliação de Músicas e Álbuns
 
 LetterFy é uma aplicação web desenvolvida com React e Vite para avaliação de músicas e álbuns. Os usuários podem compartilhar opiniões e notas sobre seus artistas favoritos.
 
@@ -51,13 +51,13 @@ Todo esse sistema de autenticação é gerenciado pelo backend com **Spring Secu
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 🎵 Integração com Spotify para exibição de álbuns populares.
-- 📝 Sistema de avaliação (reviews) de álbuns.
-- 🔐 Autenticação com Spring Security e JWT.
-- 🖼️ Carrossel animado de álbuns.
-- 📥 Cadastro e login com persistência de token.
+-  Integração com Spotify para exibição de álbuns populares.
+-  Sistema de avaliação (reviews) de álbuns.
+-  Autenticação com Spring Security e JWT.
+-  Carrossel animado de álbuns.
+-  Cadastro e login com persistência de token.
 
 ---
 
