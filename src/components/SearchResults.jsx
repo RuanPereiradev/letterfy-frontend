@@ -11,7 +11,7 @@ const AlbumSearch = ({ query }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8080/v1/album/search?name=${query}`
+          `https://letterfy-production.up.railway.app/v1/album/search?name=${query}`
         );
         console.log(response.data); 
         setSearchResults(response.data.albums || []); 

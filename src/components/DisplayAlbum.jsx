@@ -28,15 +28,15 @@ const DisplayAlbum = () => {coverImage;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/v1/album/${albumId}`)
-      .then((response) => response.json()) 
+    fetch(`https://letterfy-production.up.railway.app/v1/album/${albumId}`)
+      .then((response) => response.json())
       .then((data) => {
-        setAlbums(data); 
-        setIsLoading(false); 
+        setAlbums(data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Erro ao obter o álbum:", error); 
-        setIsLoading(false); 
+        console.error("Erro ao obter o álbum:", error);
+        setIsLoading(false);
       });
   }, [albumId]); 
 

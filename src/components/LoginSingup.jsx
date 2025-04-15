@@ -29,12 +29,12 @@ const Login = () => {
   try{
     console.log(
       "Send requisition for :",
-      "http://localhost:8080/auth/login"
+      "https://letterfy-production.up.railway.app/auth/login"
     );
     const response = await axios.post(
-      "http://localhost:8080/auth/login",
-      {login: email, password},
-      {headers: { "Content-Type" : "application/json"}}
+      "https://letterfy-production.up.railway.app/auth/login",
+      { login: email, password },
+      { headers: { "Content-Type": "application/json" } }
     );
     console.log("Login Success", response.data);
     if(response.data.token){

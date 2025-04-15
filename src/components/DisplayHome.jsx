@@ -33,7 +33,9 @@ const DisplayHome = ({}) => {
 
   // Carregar novos lançamentos (New Releases)
   useEffect(() => {
-    fetch("http://localhost:8080/spotify/api/albumsReleases")
+    fetch(
+      "https://letterfy-production.up.railway.app/spotify/api/albumsReleases"
+    )
       .then((response) => response.json())
       .then((data) => {
         setNewReleases(Array.isArray(data) ? data : []);
@@ -48,7 +50,7 @@ const DisplayHome = ({}) => {
 
   // Carregar todos os álbuns
   useEffect(() => {
-    fetch("http://localhost:8080/v1/album")
+    fetch("https://letterfy-production.up.railway.app/v1/album")
       .then((response) => response.json())
       .then((data) => {
         setAllAlbuns(Array.isArray(data) ? data : []);
@@ -328,7 +330,7 @@ const genres = [
                     <img
                       src={
                         album.images && album.images.length > 0
-                          ? album.images[0]
+                          ? album.images[0]?.url || "/fallback-image.jpg"
                           : "/fallback-image.jpg"
                       }
                       alt={album.name}

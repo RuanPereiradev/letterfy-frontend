@@ -16,7 +16,9 @@ const ReviewAlbum = () => {
   useEffect(() => {
     const fetchAlbumAndReviews = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/v1/album/${id}`);
+        const response = await fetch(
+          `https://letterfy-production.up.railway.app/v1/album/${id}`
+        );
         const data = await response.json();
         setAlbum(data);
         setReviews(data.reviews || []);
@@ -61,14 +63,17 @@ const ReviewAlbum = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/review", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-        body: JSON.stringify(newReview),
-      });
+      const response = await fetch(
+        "https://letterfy-production.up.railway.app/review",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify(newReview),
+        }
+      );
 
       if (!response.ok) {
         const errorMessage = await response.text();

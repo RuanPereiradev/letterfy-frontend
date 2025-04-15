@@ -31,17 +31,6 @@ const Sidebar = ({ setSearchQuery }) => {
           <p className="font-bold text-2xl ml-2">Letterfy</p>
         </div>
 
-        <div className="flex items-center bg-gray-800 rounded-lg px-3 py-1 w-96">
-          <FiSearch className="text-gray-400" />
-          <input
-            type="text"
-            placeholder="Pesquisar álbuns..."
-            value={query}
-            onChange={handleSearch}
-            className="bg-transparent border-none outline-none text-white px-2 w-full"
-          />
-        </div>
-
         <div className="flex items-center gap-4">
           <div
             onClick={() => navigate("/")}
