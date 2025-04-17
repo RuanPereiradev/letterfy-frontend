@@ -297,7 +297,7 @@ const genres = [
                     className="p-2"
                   >
                     <img
-                      src={album.images?.[0] || "fallback-image.jpg"}
+                      src={album.artists?.[0] || "fallback-image.jpg"}
                       alt={album.name}
                       className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
           transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"

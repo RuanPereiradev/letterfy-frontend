@@ -13,8 +13,7 @@ const AlbumSearch = ({ query }) => {
         const response = await axios.get(
           `https://letterfy-production.up.railway.app/v1/album/search?name=${query}`
         );
-        console.log(response.data); 
-        setSearchResults(response.data.albums || []); 
+        setSearchResults(response.data.albums || []);
       } catch (error) {
         console.log("Erro ao buscar álbuns:", error);
       }
@@ -31,11 +30,11 @@ const AlbumSearch = ({ query }) => {
         {searchResults.length > 0 ? (
           searchResults.map((album) => (
             <div
-              key={album.album_id || album.name} 
+              key={album.album_id || album.name}
               className="flex items-center gap-4 bg-gray-800 p-3 rounded-lg"
             >
               <img
-                src={album.coverImage || "fallback-image.jpg"} 
+                src={album.artists?.[0]?.image_url || "fallback-image.jpg"}
                 alt={album.name}
                 className="w-16 h-16 rounded-lg"
               />

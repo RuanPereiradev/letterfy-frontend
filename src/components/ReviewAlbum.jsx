@@ -20,6 +20,7 @@ const ReviewAlbum = () => {
           `https://letterfy-production.up.railway.app/v1/album/${id}`
         );
         const data = await response.json();
+        console.log("Dados do álbum:", data); // 👈 isso aqui!
         setAlbum(data);
         setReviews(data.reviews || []);
       } catch (error) {
@@ -97,7 +98,7 @@ const ReviewAlbum = () => {
         <div className="w-1/3 flex flex-col items-center text-left">
           <img
             className="w-full h-auto rounded-lg shadow-lg mb-4"
-            src={album.artists?.[0]}
+            src={album.imageUrl}
             alt={album.name}
           />
           <h1 className="text-3xl font-bold text-center">{album.name}</h1>
@@ -111,7 +112,9 @@ const ReviewAlbum = () => {
                   key={index}
                   size={20}
                   color={
-                    index < Math.round(calculateAverageRating) ? "#FFD700" : "#808080"
+                    index < Math.round(calculateAverageRating)
+                      ? "#FFD700"
+                      : "#808080"
                   }
                 />
               ))}

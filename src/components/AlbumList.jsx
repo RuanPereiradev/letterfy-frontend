@@ -14,8 +14,8 @@ const getAlbumImage = (album, isSearch) => {
   }
 
   // Caso contrário, tentamos acessar a primeira imagem se disponível
-  if (album.images && album.images.length > 0) {
-    return album.images[0]; // Retorna a primeira imagem da lista
+  if (album.artists && album.artists.length > 0) {
+    return album.artists[0]; // Retorna a primeira imagem da lista
   }
 
   // Se nenhuma imagem for encontrada, retorna a imagem fallback
