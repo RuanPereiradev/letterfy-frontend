@@ -32,10 +32,10 @@ const Register = () => {
    try {
      console.log(
        "Enviando requisição para:",
-       "http://localhost:8080/auth/register"
+       "https://letterfy-production.up.railway.app/auth/register"
      );
      const response = await axios.post(
-       "http://localhost:8080/auth/register",
+       "https://letterfy-production.up.railway.app/auth/register",
        { login: email, password, role },
        { headers: { "Content-Type": "application/json" } }
      );

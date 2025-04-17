@@ -97,7 +97,7 @@ const ReviewAlbum = () => {
         <div className="w-1/3 flex flex-col items-center text-left">
           <img
             className="w-full h-auto rounded-lg shadow-lg mb-4"
-            src={album.artists?.[0] || album.images?.[0]}
+            src={album.artists?.[0]}
             alt={album.name}
           />
           <h1 className="text-3xl font-bold text-center">{album.name}</h1>

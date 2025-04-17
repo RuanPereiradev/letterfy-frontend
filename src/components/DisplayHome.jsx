@@ -27,6 +27,7 @@ const DisplayHome = ({}) => {
   const [allAlbums, setAllAlbuns] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
   const [newReleases, setNewReleases] = useState([]);
+
   const navigate = useNavigate();
 
   
@@ -329,9 +330,7 @@ const genres = [
                   >
                     <img
                       src={
-                        album.images && album.images.length > 0
-                          ? album.images[0]?.url || "/fallback-image.jpg"
-                          : "/fallback-image.jpg"
+                        album.artists?.[0] || "/fallback-image.jpg"
                       }
                       alt={album.name}
                       className="cursor-pointer w-full p-4 rounded-lg shadow-lg bg-black-900 
